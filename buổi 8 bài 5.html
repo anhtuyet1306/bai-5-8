@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slideshow Ảnh</title>
+    <style>
+        .slideshow-container {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <img class="slide" src="https://i.pinimg.com/736x/e7/b8/8e/e7b88efb0ffa29a837f2ed8c856f4390.jpg" style="display:block">
+    <img class="slide" src="https://i.pinimg.com/736x/c3/83/e3/c383e3dc4f60aefac420def027c285d2.jpg">
+    <img class="slide" src="https://i.pinimg.com/736x/9b/4c/b5/9b4cb5916a7dec7deac0e1fc813e3687.jpg">
+    <img class="slide" src="https://i.pinimg.com/736x/e4/cc/a9/e4cca9c091b4d9668c99596add5f20a4.jpg">
+
+    <button class="prev" onclick="changeSlide(-1)">❮</button>
+    <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
+
+<script>
+    let index = 0;
+    const slides = document.getElementsByClassName("slide");
+
+    function showSlide(i) {
+        for (let slide of slides) {
+            slide.style.display = "none";
+        }
+        index = (i + slides.length) % slides.length;
+        slides[index].style.display = "block";
+    }
+
+    function changeSlide(n) {
+        showSlide(index + n);
+    }
+</script>
+
+</body>
+</html>
